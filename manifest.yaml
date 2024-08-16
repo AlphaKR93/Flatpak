@@ -73,9 +73,9 @@ modules:
           url: https://discord.com/api/download?platform=linux&format=tar.gz
           pattern: https://dl.discordapp.net/apps/linux/([0-9.]+)/discord-([0-9.]+).tar.gz
 
-        url: https://dl.discordapp.net/apps/linux/0.0.63/discord-0.0.63.tar.gz
-        sha256: 2ad557f4424f626cc341dd9b795fdd0d6f238cb0e369c2990eb0fbda42d4c0aa
-        size: 103542034
+        url: https://dl.discordapp.net/apps/linux/0.0.64/discord-0.0.64.tar.gz
+        sha256: b41a29ca11913439ad3964b0c223673c9266f36b24decefa714ba7edeac745b3
+        size: 103547165
 
         # DO NOT EDIT
         type: extra-data
@@ -125,7 +125,7 @@ modules:
           tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
