@@ -1,0 +1,153 @@
+id: org.thorium.Thorium
+command: thorium
+default-branch: avx2
+finish-args:
+  - --require-version=1.8.2
+
+  # Subsystems shared with the host
+  - --share=network
+  - --share=ipc
+
+  # Socket access
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=cups
+
+  # Device access
+  - --device=dri
+
+  # Allowed FS subsets
+  - --filesystem=xdg-download
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  - --filesystem=~/.config/kioslaverc
+  - --filesystem=/run/.heim_org.h5l.kcm-socket
+
+  # Environment variables
+  - --env=GTK_PATH=/app/lib/gtkmodules
+  - --env=GSETTINGS_BACKEND=dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+  - --env=GIO_EXTRA_MODULES=/app/lib/gio/modules
+
+  # Bus
+  - --own-name=org.mpris.MediaPlayer2.chromium.*
+  - --talk-name=ca.desrt.dconf
+  - --talk-name=org.freedesktop.FileManager1
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.gnome.SessionManager
+  - --system-talk-name=org.bluez
+  - --system-talk-name=org.freedesktop.UPower
+  - --system-talk-name=org.freedesktop.Avahi
+modules:
+  - name: dconf
+    buildsystem: meson
+    config-opts:
+      - -Dbash_completion=false
+      - -Dman=false
+      - -Dvapi=false
+    cleanup:
+      - /etc
+      - /include
+      - ca.desrt.dconf.service
+      - dconf.service
+      - dconf-service
+      - '*.pc'
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz
+        sha256: cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533
+        x-checker-data:
+          type: gnome
+          name: dconf
+          stable-only: true
+      # From: https://src.fedoraproject.org/rpms/dconf
+      - type: patch
+        path: src/dconf-override.patch
+
+  - name: cobalt
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/refi64/cobalt
+        tag: v2023.02beta.1
+        commit: 99fd12a318acd3d169ab491a051353258fd0e72a
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
+
+  - name: flextop
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/refi64/flextop
+        tag: v2022.03beta.1
+        commit: 83c73e435630b94a6f44abe67cb268eae5b229b4
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
+
+  - name: app
+    buildsystem: simple
+    build-commands:
+      - install -Dm 755 -t ${FLATPAK_DEST}/bin thorium
+      - install -Dm 755 -t ${FLATPAK_DEST}/bin stub_sandbox
+      - install -Dm 644 -t ${FLATPAK_DEST}/etc cobalt.ini
+
+      # DO NOT EDIT
+      - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ${FLATPAK_ID}.desktop
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.svg
+    sources:
+      - type: file
+        path: org.thorium.Thorium.metainfo.xml
+
+      - type: script
+        dest-filename: stub_sandbox
+        commands:
+          - 'echo "Stub sandbox ignoring command: $@"'
+          - exit 1
+
+      - commands:
+          - unzip -qq thorium.zip
+          - rm thorium.zip
+
+        # DO NOT EDIT
+        dest-filename: apply_extra
+        type: script
+
+      - x-checker-data:
+          type: anitya
+          project-id: 373887
+          url-template: https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_AVX2.zip
+
+        url: https://github.com/Alex313031/thorium/releases/download/M126.0.6478.231/thorium-browser_126.0.6478.231_AVX2.zip
+        sha256: ffb1193f8c37579de2da63e9f1fa3fe37d15f45f45145cdb3deb197bf1c00e24
+        size: 274678609
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.zip
+
+      # DO NOT EDIT
+      - type: dir
+        path: src
+
+  - name: zypak
+    sources:
+      - type: git
+        url: https://github.com/refi64/zypak
+        tag: v2023.02beta.1
+        commit: 64f6ccfdfd223cc2d2d68608ef42b8ff2fd6400e
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
+
+sdk: org.freedesktop.Sdk
+tags: ['proprietary']
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+separate-locales: false
