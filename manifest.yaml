@@ -73,9 +73,9 @@ modules:
           url: https://discord.com/api/download/canary?platform=linux&format=tar.gz
           pattern: https://dl.discord-canary.net/apps/linux/([0-9.]+)/discord-canary-([0-9.]+).tar.gz
 
-        url: https://dl-canary.discordapp.net/apps/linux/0.0.465/discord-canary-0.0.465.tar.gz
-        sha256: 87850b2cf461b46cba1591ca7e3dc01748633e189d56f2446c739580287ee894
-        size: 105038499
+        url: https://dl-canary.discordapp.net/apps/linux/0.0.471/discord-canary-0.0.471.tar.gz
+        sha256: 07ba5e915e96851607fd2aa4fa05c9ada95d0c97fb61d777b4f22f7390df3eb9
+        size: 105040317
 
         # DO NOT EDIT
         type: extra-data
@@ -125,7 +125,7 @@ modules:
           tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
