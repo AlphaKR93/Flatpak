@@ -14,7 +14,7 @@ jobs:
       GPGPK: ${{ secrets.GPGPK }}
       GPGPW: ${{ secrets.GPGPW }}
       GHPAT: ${{ secrets.GHPAT }}
-    uses: AlphaKR93/Flatpak/.github/workflows/build.yml@master
+    uses: AlphaKR93/Flatpak/.github/workflows/build.yml@main
 
 on:
   push:
