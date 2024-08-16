@@ -27,7 +27,7 @@ jobs:
       - id: resolve
         name: Get every branches
         run: |
-          REMOTE=($(git branch -r | grep -v 'master' | sed -e 's/origin\///'))
+          REMOTE=($(git branch -r | grep -v 'main' | sed -e 's/origin\///'))
           MATRIX=$(jq -cn '{branch: $ARGS.positional}' --args "${REMOTE[@]}")
           echo "${REMOTE[@]} -> ${MATRIX}"
           echo "matrix=${MATRIX}" >> $GITHUB_OUTPUT
