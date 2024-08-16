@@ -73,9 +73,9 @@ modules:
           url: https://discord.com/api/download/ptb?platform=linux&format=tar.gz
           pattern: https://dl.ptb-discordapp.net/apps/linux/([0-9.]+)/discord-ptb-([0-9.]+).tar.gz
 
-        url: https://dl-ptb.discordapp.net/apps/linux/0.0.98/discord-ptb-0.0.98.tar.gz
-        sha256: 689c79aee6510a70537ff4289f5b857f1317d9adb95e0d80cdb9cdfd4b437bcc
-        size: 103542322
+        url: https://dl-ptb.discordapp.net/apps/linux/0.0.99/discord-ptb-0.0.99.tar.gz
+        sha256: c570560f91f830e0b61da270379f8de2ce5f1eb1deb7acd39b50bb0a158df197
+        size: 103549336
 
         # DO NOT EDIT
         type: extra-data
@@ -125,7 +125,7 @@ modules:
           tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
