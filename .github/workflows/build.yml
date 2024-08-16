@@ -1,0 +1,99 @@
+name: Build and publish Flatpak package
+on:
+  workflow_call:
+    inputs:
+      arch:
+        type: string
+        required: true
+        description: 'The architecture to build the package for'
+      branch:
+        type: string
+        required: true
+        description: 'The branch to build the package for'
+
+    secrets:
+      GPGPK:
+        required: true
+        description: 'GPG Private Key to sign the package'
+      GPGPW:
+        required: true
+        description: 'GPG Passphrase to sign the package'
+      GHPAT:
+        required: true
+        description: 'GitHub Personal Access Token to publish the package'
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  build:
+    name: Build Flatpak package
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/andyholmes/flatter/freedesktop:23.08
+      options: --privileged
+
+    steps:
+      - id: checkout
+        name: Checkout actions
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+          
+      - id: checkout-module
+        name: Checkout shared modules
+        uses: actions/checkout@v4
+        with:
+          repository: Flathub/shared-modules
+          path: shared-modules
+
+      - id: qemu
+        if: ${{ inputs.arch == 'aarch64' }}
+        name: Setup qEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - id: signing
+        name: Setup GPG
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPGPK }}
+          passphrase: ${{ secrets.GPGPW }}
+      
+      - id: checkout-repo
+        name: Checkout Flatpak repository
+        uses: actions/checkout@v4
+        with:
+          repository: AlphaKR93/Alphasitory
+          token: ${{ secrets.GHPAT }}
+          submodules: true
+          path: repo_tmp
+          sparse-checkout: |
+            flatpak
+          sparse-checkout-cone-mode: false
+
+      - id: setup
+        name: Prepare the build
+        run: |
+          mv repo_tmp/flatpak repo
+
+      - id: package
+        name: Build Flatpak package
+        uses: andyholmes/flatter@main
+        with:
+          files: |
+            ./manifest.yaml
+          arch: ${{ inputs.arch }}
+          gpg-sign: ${{ steps.signing.outputs.fingerprint }}
+          cache-key: flatter-${{ github.sha }}
+          upload-bundles: true
+
+      - id: deploy
+        name: Deploy the repository
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          token: ${{ secrets.GHPAT }}
+          folder: ${{ steps.package.outputs.repository }}
+          target-folder: flatpak
+          repository-name: AlphaKR93/Alphasitory

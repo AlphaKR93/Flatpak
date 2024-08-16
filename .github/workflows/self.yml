@@ -1,0 +1,23 @@
+name: Build and publish Flatpak package manually
+on:
+  workflow_dispatch:
+    inputs:
+      arch:
+        type: string
+        required: true
+        description: 'The architecture to build the package for'
+      branch:
+        type: string
+        required: true
+        description: 'The branch to build the package for'
+
+jobs:
+  package:
+    uses: ./.github/workflows/build.yml
+    with:
+      arch: ${{ github.event.inputs.arch }}
+      branch: ${{ github.event.inputs.branch }}
+    secrets:
+      GPGPK: ${{ secrets.GPGPK }}
+      GPGPW: ${{ secrets.GPGPW }}
+      GHPAT: ${{ secrets.GHPAT }}
