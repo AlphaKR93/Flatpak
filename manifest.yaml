@@ -1,6 +1,5 @@
-id: com.discord.Discord
-command: discord
-default-branch: dev
+id: com.discord.DiscordDevelopment
+command: discord-development
 finish-args:
   # Subsystems shared with the host
   - --share=network
@@ -48,7 +47,7 @@ modules:
   - name: app
     buildsystem: simple
     build-commands:
-      - install -Dm 755 -t ${FLATPAK_DEST}/bin discord
+      - install -Dm 755 -t ${FLATPAK_DEST}/bin discord-development
       - install -Dm 755 -t ${FLATPAK_DEST}/bin disable-breaking-updates.py
 
       # DO NOT EDIT
@@ -58,7 +57,7 @@ modules:
       - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps ${FLATPAK_ID}.png
     sources:
       - type: file
-        path: com.discord.Discord.metainfo.xml
+        path: com.discord.DiscordDevelopment.metainfo.xml
 
       - commands:
           - mkdir discord/

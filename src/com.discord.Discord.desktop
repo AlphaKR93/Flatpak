@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Discord Canary
+Name=Discord Development
 StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
 GenericName=Internet Messenger
-Exec=/app/bin/discord
-Icon=com.discord.Discord
+Exec=/app/bin/discord-development
+Icon=com.discord.DiscordDevelopment
 Type=Application
 Categories=Network;InstantMessaging;
