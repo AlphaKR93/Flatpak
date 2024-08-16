@@ -1,8 +1,6 @@
 name: Check the metadata is up-to-date
 on:
   push:
-    branches:
-      - master
     paths:
       - '.github/workflows/check.yml'
   schedule:
