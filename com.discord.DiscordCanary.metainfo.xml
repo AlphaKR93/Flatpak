@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
 
-  <id>com.discord.Discord</id>
-  <launchable type="desktop-id">com.discord.Discord.desktop</launchable>
+  <id>com.discord.DiscordCanary</id>
+  <launchable type="desktop-id">com.discord.DiscordCanary.desktop</launchable>
 
-  <name>Discord Development</name>
+  <name>Discord Canary</name>
   <summary>Messaging, voice and video client</summary>
 
   <developer_name>Discord Inc.</developer_name>

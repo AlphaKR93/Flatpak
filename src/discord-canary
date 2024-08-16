@@ -1,5 +1,5 @@
 #!/bin/bash
-FLATPAK_ID=${FLATPAK_ID:-"com.discord.Discord"}
+FLATPAK_ID=${FLATPAK_ID:-"com.discord.DiscordCanary"}
 socat $SOCAT_ARGS \
     UNIX-LISTEN:$XDG_RUNTIME_DIR/app/${FLATPAK_ID}/discord-ipc-0,forever,fork \
     UNIX-CONNECT:$XDG_RUNTIME_DIR/discord-ipc-0 \
@@ -14,5 +14,5 @@ then
 fi
 
 disable-breaking-updates.py
-env TMPDIR=$XDG_CACHE_HOME zypak-wrapper /app/extra/discord/Discord --enable-speech-dispatcher $FLAGS "$@"
+env TMPDIR=$XDG_CACHE_HOME zypak-wrapper /app/extra/discord/DiscordCanary --enable-speech-dispatcher $FLAGS "$@"
 kill -SIGTERM $socat_pid
