@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
 
-  <id>com.discord.Discord</id>
-  <launchable type="desktop-id">com.discord.Discord.desktop</launchable>
+  <id>com.discord.DiscordPTB</id>
+  <launchable type="desktop-id">com.discord.DiscordPTB.desktop</launchable>
 
   <name>Discord PTB</name>
   <summary>Messaging, voice and video client</summary>
