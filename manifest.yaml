@@ -112,8 +112,8 @@ modules:
           - exit 1
 
       - commands:
-          - unzip -qq thorium.zip
-          - rm thorium.zip
+          - unzip -qq source.zip
+          - rm source.zip
 
         # DO NOT EDIT
         dest-filename: apply_extra
