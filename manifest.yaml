@@ -65,9 +65,15 @@ modules:
         dest-filename: apply_extra
         type: script
 
-      - url: https://download.beeper.com/linux/deb/x64
+      - url: https://download.todesktop.com/2003241lzgn20jd/beeper-3.108.3-build-2407188w36frwla-amd64.deb
         sha256: 9d9f88ac31a80fc27a09b5c80c6838be89258b05c62a54b83280a42d167d53b2
         size: 123859194
+        x-checker-data:
+          type: json
+          is-main-source: true
+          url: https://api.alpha93.kr/tools/io/conv/json?url=https://download.todesktop.com/2003241lzgn20jd/latest-linux.yml
+          version-query: ".version"
+          url-query: ".files.[] | select(.url | contains('deb')) | 'https://download.todesktop.com/2003241lzgn20jd/' + .url"
 
         # DO NOT EDIT
         type: extra-data
