@@ -87,13 +87,13 @@ modules:
     buildsystem: simple
     sources:
       - type: file
-        path: com.jetbrains.IDEA.Ultimate.metainfo.xml
+        path: com.jetbrains.IntelliJ-IDEA.metainfo.xml
 
       - type: file
         url: https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA_icon.svg
         sha256: 77950f507eab46765204cf67639808bd37f7233dce6223954dacae45bd246a84
         size: 2201
-        dest-filename: com.jetbrains.IDEA.Ultimate.svg
+        dest-filename: com.jetbrains.IntelliJ-IDEA.svg
 
       - commands:
           - mkdir IDEA-U/
