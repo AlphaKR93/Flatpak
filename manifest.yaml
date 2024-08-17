@@ -121,6 +121,7 @@ modules:
 
       - x-checker-data:
           type: anitya
+          is-main-source: true
           project-id: 373887
           url-template: https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_AVX2.zip
 
