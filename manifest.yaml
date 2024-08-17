@@ -70,6 +70,7 @@ modules:
 
       - x-checker-data:
           type: rotating-url
+          is-main-source: true
           url: https://discord.com/api/download/development?platform=linux&format=tar.gz
           pattern: https://dl-development.discordapp.net/apps/linux/([0-9.]+)/discord-development-([0-9.]+).tar.gz
 

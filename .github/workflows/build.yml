@@ -16,10 +16,8 @@ jobs:
       GHPAT: ${{ secrets.GHPAT }}
     uses: AlphaKR93/Flatpak/.github/workflows/build.yml@main
 
+name: Build and publish Flatpak package
 on:
-  push:
-    paths:
-      - manifest.yaml
   workflow_call:
     secrets:
       GPGPK:
@@ -31,4 +29,3 @@ on:
       GHPAT:
         required: true
         description: 'GitHub Personal Access Token to publish the package'
-name: Build and publish Flatpak package
