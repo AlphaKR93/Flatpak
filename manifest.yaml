@@ -1,0 +1,145 @@
+id: com.jetbrains.WebStorm
+default-branch: beta
+command: webstorm
+finish-args:
+  # Subsystems shared with the host
+  - --share=network
+  - --share=ipc
+
+  # Socket access
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+
+  # Device access
+  - --device=dri
+  - --device=kvm
+
+  # Allowed Features
+  - --allow=devel
+  - --allow=multiarch
+
+  # Allowed FS subsets
+  - --filesystem=host
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  - --filesystem=xdg-run/docker
+  - --filesystem=xdg-run/gnupg:ro
+  - --filesystem=xdg-run/keyring
+  - --filesystem=xdg-run/podman
+
+  # Persistent dirs
+  # - --filesystem=.java
+
+  # Environment variables
+  - --env=WEBIDE_PROPERTIES=/app/bin/idea.properties
+  # - --env=WEBIDE_JDK=/app/extra/webstorm/jre64
+
+  # Bus
+  - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+modules:
+  - shared-modules/libsecret/libsecret.json
+
+  - name: rsync
+    cleanup:
+      - /share/man
+    config-opts:
+      - --prefix=${FLATPAK_DEST}
+      - --with-included-popt
+      - --with-included-zlib
+      - --disable-debug
+      - --disable-md2man
+      - --disable-xxhash
+    sources:
+      - type: archive
+        url: https://download.samba.org/pub/rsync/src/rsync-3.3.0.tar.gz
+        sha256: 7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
+        x-checker-data:
+          type: anitya
+          project-id: 4217
+          stable-only: true
+          url-template: https://download.samba.org/pub/rsync/src/rsync-$version.tar.gz
+
+  - name: wrapper
+    buildsystem: meson
+    config-opts:
+      - -Deditor_binary=/app/extra/webstorm/bin/webstorm.sh
+      - -Deditor_title=WebStorm
+      - -Dprogram_name=webstorm
+    sources:
+      - type: dir
+        path: jetbrains-flatpak-wrapper
+
+  - name: webstorm
+    buildsystem: simple
+    build-commands:
+      - install -Dm 644 -t ${FLATPAK_DEST}/bin idea.properties
+
+      # DO NOT EDIT
+      - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ${FLATPAK_ID}.desktop
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.png
+    sources:
+      - type: file
+        path: com.jetbrains.WebStorm.metainfo.xml
+
+      - type: file
+        url: https://resources.jetbrains.com/storage/products/company/brand/logos/WebStorm_icon.svg
+        sha256: 122e91c48164cad32675a66a2d064c1c4b258343c7c711239f8a3b0bb7a4fac8
+        size: 3134
+        dest-filename: com.jetbrains.WebStorm.svg
+
+      - commands:
+          - mkdir IDEA-U/
+          - tar -xzf source.tar.gz --directory=IDEA-U/ --strip-components=1
+          - rm source.tar.gz
+
+        # DO NOT EDIT
+        dest-filename: apply_extra
+        type: script
+
+      - x-checker-data:
+          type: jetbrains
+          code: WS
+          release-type: eap
+          is-main-source: true
+        only-arches:
+          - x86_64
+
+        url: https://download.jetbrains.com/webstorm/WebStorm-242.20224.96.tar.gz
+        sha256: 517d6a43f7540fcdb68938117e84f87059358e56554245936f596d1d24850c95
+        size: 982468402
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      - x-checker-data:
+          type: jetbrains
+          code: WS
+          release-type: eap
+        only-arches:
+          - aarch64
+
+        url: https://download.jetbrains.com/webstorm/WebStorm-242.20224.96-aarch64.tar.gz
+        sha256: 2e45c58cc40b5e4875687cad996e2f5775ceb7e12817b191ba4ac2e6aa917ec3
+        size: 981308926
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      # DO NOT EDIT
+      - type: dir
+        path: src
+
+sdk: org.freedesktop.Sdk
+tags: ['proprietary']
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+separate-locales: false

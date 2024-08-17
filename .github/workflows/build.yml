@@ -1,0 +1,31 @@
+jobs:
+  package:
+    strategy:
+      matrix:
+        arch: ['x86_64']
+
+      fail-fast: false
+      max-parallel: 1
+
+    with:
+      arch: ${{ matrix.arch }}
+      branch: ${{ github.ref }}
+    secrets:
+      GPGPK: ${{ secrets.GPGPK }}
+      GPGPW: ${{ secrets.GPGPW }}
+      GHPAT: ${{ secrets.GHPAT }}
+    uses: AlphaKR93/Flatpak/.github/workflows/build.yml@main
+
+name: Build and publish Flatpak package
+on:
+  workflow_call:
+    secrets:
+      GPGPK:
+        required: true
+        description: 'GPG Private Key to sign the package'
+      GPGPW:
+        required: true
+        description: 'GPG Passphrase to sign the package'
+      GHPAT:
+        required: true
+        description: 'GitHub Personal Access Token to publish the package'
