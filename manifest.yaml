@@ -67,7 +67,7 @@ modules:
   - name: wrapper
     buildsystem: meson
     config-opts:
-      - -Deditor_binary=/app/extra/webstorm/bin/webstorm.sh
+      - -Deditor_binary=/app/extra/WEBIDE/bin/webstorm.sh
       - -Deditor_title=WebStorm
       - -Dprogram_name=webstorm
     sources:
@@ -83,7 +83,7 @@ modules:
       - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
       - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
       - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ${FLATPAK_ID}.desktop
-      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.png
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.svg
     sources:
       - type: file
         path: com.jetbrains.WebStorm.metainfo.xml
@@ -95,8 +95,8 @@ modules:
         dest-filename: com.jetbrains.WebStorm.svg
 
       - commands:
-          - mkdir IDEA-U/
-          - tar -xzf source.tar.gz --directory=IDEA-U/ --strip-components=1
+          - mkdir WEBIDE/
+          - tar -xzf source.tar.gz --directory=WEBIDE/ --strip-components=1
           - rm source.tar.gz
 
         # DO NOT EDIT
