@@ -1,0 +1,37 @@
+# Generated with flatpak-pip-generator pipenv --runtime com.jetbrains.PyCharm-Professional --checker-data --yaml
+name: python3-pipenv
+buildsystem: simple
+build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "pipenv" --no-build-isolation
+sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/b1/f9/377158dbac2a0ebe7b7441303252964ce13a607ee34068b52d1dae814b8b/pipenv-2024.0.1-py3-none-any.whl
+    sha256: 5360835c613837423a99b8c94952b139b777b3eaabb42cb9edb34556245b4c25
+    x-checker-data:
+      name: pipenv
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/c5/d5/f914b715f8b4c2ae8ca10112d389c04bed368ddd8888b70dafe740269bb5/virtualenv-20.24.0-py3-none-any.whl
+    sha256: 18d1b37fc75cc2670625702d76849a91ebd383768b4e91382a8d51be3246049e
+
+  - type: file
+    url: https://files.pythonhosted.org/packages/5e/5d/97afbafd9d584ff1b45fcb354a479a3609bd97f912f8f1f6c563cb1fae21/filelock-3.12.4-py3-none-any.whl
+    sha256: 08c21d87ded6e2b9da6728c3dff51baf1dcecf973b768ef35bcbc3447edb9ad4
+
+  - type: file
+    url: https://files.pythonhosted.org/packages/56/29/3ec311dc18804409ecf0d2b09caa976f3ae6215559306b5b530004e11156/platformdirs-3.11.0-py3-none-any.whl
+    sha256: e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e
+
+  - type: file
+    url: https://files.pythonhosted.org/packages/21/ac/e07058dc5a6c1b97f751d24f20d4b0ec14d735d77f4a1f78c471d6d13a43/virtualenv_clone-0.5.7-py3-none-any.whl
+    sha256: 44d5263bceed0bac3e1424d64f798095233b64def1c5689afa43dc3223caf5b0
+
+  - type: file
+    url: https://files.pythonhosted.org/packages/4c/dd/2234eab22353ffc7d94e8d13177aaa050113286e93e7b40eae01fbf7c3d9/certifi-2023.7.22-py3-none-any.whl
+    sha256: 92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9
+
+  - type: file
+    url: https://files.pythonhosted.org/packages/43/a0/9ba967fdbd55293bacfc1507f58e316f740a3b231fc00e3d86dc39bc185a/distlib-0.3.7-py2.py3-none-any.whl
+    sha256: 2e24928bc811348f0feb63014e97aaae3037f2cf48712d51ae61df7fd6075057

@@ -1,0 +1,160 @@
+id: com.jetbrains.PyCharm
+default-branch: beta
+command: idea
+finish-args:
+  # Subsystems shared with the host
+  - --share=network
+  - --share=ipc
+
+  # Socket access
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+
+  # Device access
+  - --device=dri
+  - --device=kvm
+
+  # Allowed Features
+  - --allow=devel
+  - --allow=multiarch
+
+  # Allowed FS subsets
+  - --filesystem=host
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  - --filesystem=xdg-run/docker
+  - --filesystem=xdg-run/gnupg:ro
+  - --filesystem=xdg-run/keyring
+  - --filesystem=xdg-run/podman
+
+  # Persistent dirs
+  # - --filesystem=.java
+
+  # Environment variables
+  - --env=IDEA_PROPERTIES=/app/bin/idea.properties
+  # - --env=IDEA_JDK=/app/bin/jre64
+
+  # Bus
+  - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+add-extensions:
+  com.jetbrains.PyCharm.Extensions:
+    directory: extensions
+    version: '23.08'
+    add-ld-path: lib
+    merge-dirs: bin;lib
+    subdirectories: true
+    no-autodownload: true
+modules:
+  - shared-modules/libsecret/libsecret.json
+  - src/python3-pipenv.yaml
+  - src/python3-virtualenv.yaml
+  - src/python3-poetry.yaml
+
+  - name: rsync
+    cleanup:
+      - /share/man
+    config-opts:
+      - --prefix=${FLATPAK_DEST}
+      - --with-included-popt
+      - --with-included-zlib
+      - --disable-debug
+      - --disable-md2man
+      - --disable-xxhash
+    sources:
+      - type: archive
+        url: https://download.samba.org/pub/rsync/src/rsync-3.3.0.tar.gz
+        sha256: 7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
+        x-checker-data:
+          type: anitya
+          project-id: 4217
+          stable-only: true
+          url-template: https://download.samba.org/pub/rsync/src/rsync-$version.tar.gz
+
+  - name: wrapper
+    buildsystem: meson
+    config-opts:
+      - -Deditor_binary=/app/extra/PYCHARM/bin/pycharm.sh
+      - -Deditor_title=PyCharm Professional
+      - -Dprogram_name=pycharm
+    sources:
+      - type: git
+        commit: 5a054811ab2144ceaf343169b240a70eeb4dfb47
+        url: https://github.com/Lctrs/jetbrains-flatpak-wrapper.git
+
+  - name: idea
+    build-commands:
+      - install -Dm 644 -t ${FLATPAK_DEST}/bin idea.properties
+      - install -d "${FLATPAK_DEST}/extensions"
+      - install -d "${FLATPAK_DEST}/packages"
+
+      # DO NOT EDIT
+      - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ${FLATPAK_ID}.desktop
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.svg
+    buildsystem: simple
+    sources:
+      - type: file
+        path: com.jetbrains.PyCharm.metainfo.xml
+
+      - type: file
+        url: https://resources.jetbrains.com/storage/products/company/brand/logos/PyCharm_icon.svg
+        sha256: 9ffd475c5139293ac050ea01edeea1e48b0412840e30c54a9238039465a03275
+        size: 45166
+        dest-filename: com.jetbrains.PyCharm.svg
+
+      - commands:
+          - mkdir PYCHARM/
+          - tar -xzf source.tar.gz --directory=PYCHARM/ --strip-components=1
+          - rm source.tar.gz
+          - python3 /app/extra/plugins/python-ce/helpers/pydev/setup_cython.py build_ext --inplace
+
+        # DO NOT EDIT
+        dest-filename: apply_extra
+        type: script
+
+      - x-checker-data:
+          type: jetbrains
+          code: PCP
+          release-type: eap
+          is-main-source: true
+        only-arches:
+          - x86_64
+
+        url: https://download.jetbrains.com/python/pycharm-professional-2024.2.tar.gz
+        sha256: 433614ddf391fa208f65684ff511ade2d79a87de995699b6a3c6837c27b03b27
+        size: 1167776746
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      - x-checker-data:
+          type: jetbrains
+          code: PCP
+          release-type: eap
+        only-arches:
+          - aarch64
+
+        url: https://download.jetbrains.com/python/pycharm-professional-2024.2-aarch64.tar.gz
+        sha256: 2af60f9229b77e2682bf3daa29d18b88598b98cfb1a42d2e739c86388f31c821
+        size: 1166936342
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      # DO NOT EDIT
+      - type: dir
+        path: src
+
+sdk: org.freedesktop.Sdk
+tags: ['proprietary']
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+separate-locales: false
