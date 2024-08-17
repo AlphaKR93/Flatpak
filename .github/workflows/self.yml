@@ -1,0 +1,14 @@
+name: Build and publish Flatpak package manually
+on:
+  push:
+    paths:
+      - manifest.yaml
+  workflow_dispatch:
+
+jobs:
+  package:
+    uses: ./.github/workflows/build.yml
+    secrets:
+      GPGPK: ${{ secrets.GPGPK }}
+      GPGPW: ${{ secrets.GPGPW }}
+      GHPAT: ${{ secrets.GHPAT }}

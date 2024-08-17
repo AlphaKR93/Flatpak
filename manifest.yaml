@@ -1,0 +1,146 @@
+id: com.jetbrains.IntelliJ-IDEA
+default-branch: beta
+command: idea
+finish-args:
+  # Subsystems shared with the host
+  - --share=network
+  - --share=ipc
+
+  # Socket access
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --socket=ssh-auth
+
+  # Device access
+  - --device=dri
+  - --device=kvm
+
+  # Allowed Features
+  - --allow=devel
+  - --allow=multiarch
+
+  # Allowed FS subsets
+  - --filesystem=host
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  - --filesystem=xdg-run/docker
+  - --filesystem=xdg-run/gnupg:ro
+  - --filesystem=xdg-run/keyring
+  - --filesystem=xdg-run/podman
+
+  # Persistent dirs
+  # - --filesystem=.java
+
+  # Environment variables
+  - --env=IDEA_PROPERTIES=/app/bin/idea.properties
+  # - --env=IDEA_JDK=/app/bin/jre64
+
+  # Bus
+  - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=org.freedesktop.Flatpak
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.secrets
+modules:
+  - shared-modules/libsecret/libsecret.json
+
+  - name: rsync
+    cleanup:
+      - /share/man
+    config-opts:
+      - --prefix=${FLATPAK_DEST}
+      - --with-included-popt
+      - --with-included-zlib
+      - --disable-debug
+      - --disable-md2man
+      - --disable-xxhash
+    sources:
+      - type: archive
+        url: https://download.samba.org/pub/rsync/src/rsync-3.3.0.tar.gz
+        sha256: 7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
+        x-checker-data:
+          type: anitya
+          project-id: 4217
+          stable-only: true
+          url-template: https://download.samba.org/pub/rsync/src/rsync-$version.tar.gz
+
+  - name: wrapper
+    buildsystem: meson
+    config-opts:
+      - -Deditor_binary=/app/extra/IDEA-U/bin/idea.sh
+      - -Deditor_title=IntelliJ IDEA Ultimate
+      - -Dprogram_name=idea
+    sources:
+      - type: git
+        commit: 5a054811ab2144ceaf343169b240a70eeb4dfb47
+        url: https://github.com/Lctrs/jetbrains-flatpak-wrapper.git
+
+  - name: idea
+    build-commands:
+      - install -Dm 644 -t ${FLATPAK_DEST}/bin idea.properties
+
+      # DO NOT EDIT
+      - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/applications ${FLATPAK_ID}.desktop
+      - install -Dm 644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_ID}.png
+    buildsystem: simple
+    sources:
+      - type: file
+        path: com.jetbrains.IDEA.Ultimate.metainfo.xml
+
+      - type: file
+        url: https://resources.jetbrains.com/storage/products/company/brand/logos/IntelliJ_IDEA_icon.svg
+        sha256: 77950f507eab46765204cf67639808bd37f7233dce6223954dacae45bd246a84
+        size: 2201
+        dest-filename: com.jetbrains.IDEA.Ultimate.svg
+
+      - commands:
+          - mkdir IDEA-U/
+          - tar -xzf source.tar.gz --directory=IDEA-U/ --strip-components=1
+          - rm source.tar.gz
+
+        # DO NOT EDIT
+        dest-filename: apply_extra
+        type: script
+
+      - x-checker-data:
+          type: jetbrains
+          code: IIU
+          release-type: eap
+          is-main-source: true
+        only-arches:
+          - x86_64
+
+        url: https://download.jetbrains.com/idea/ideaIU-242.21829.15.tar.gz
+        sha256: fd8b629681281dc176383c66b79fa7db5e5e0e54be57a55c6f3a5b06e544cde4
+        size: 1425459650
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      - x-checker-data:
+          type: jetbrains
+          code: IIU
+          release-type: eap
+        only-arches:
+          - aarch64
+
+        url: https://download.jetbrains.com/idea/ideaIU-242.21829.15-aarch64.tar.gz
+        sha256: 8a485e9af5bc12b9cbb69b6c5df5e625ca23a8bb4d2c10a0f89b80ef729b9b5c
+        size: 1424287206
+
+        # DO NOT EDIT
+        type: extra-data
+        filename: source.tar.gz
+
+      # DO NOT EDIT
+      - type: dir
+        path: src
+
+sdk: org.freedesktop.Sdk
+tags: ['proprietary']
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+separate-locales: false
