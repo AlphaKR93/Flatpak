@@ -73,7 +73,7 @@ modules:
           is-main-source: true
           url: https://api.alpha93.kr/tools/io/conv/json?url=https://download.todesktop.com/2003241lzgn20jd/latest-linux.yml
           version-query: ".version"
-          url-query: ".files.[] | select(.url | contains('deb')) | 'https://download.todesktop.com/2003241lzgn20jd/' + .url"
+          url-query: '.files.[] | select(.url | contains("deb")) | "https://download.todesktop.com/2003241lzgn20jd/" + .url'
 
         # DO NOT EDIT
         type: extra-data
