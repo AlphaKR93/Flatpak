@@ -70,6 +70,7 @@ modules:
 
       - x-checker-data:
           type: rotating-url
+          is-main-source: true
           url: https://discord.com/api/download/ptb?platform=linux&format=tar.gz
           pattern: https://dl.ptb-discordapp.net/apps/linux/([0-9.]+)/discord-ptb-([0-9.]+).tar.gz
 
