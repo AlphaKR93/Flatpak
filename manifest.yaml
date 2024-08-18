@@ -1,6 +1,6 @@
 id: com.jetbrains.PyCharm
 default-branch: beta
-command: idea
+command: pycharm
 finish-args:
   # Subsystems shared with the host
   - --share=network
