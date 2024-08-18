@@ -33,8 +33,8 @@ finish-args:
   # - --filesystem=.java
 
   # Environment variables
-  - --env=IDEA_PROPERTIES=/app/bin/idea.properties
-  # - --env=IDEA_JDK=/app/bin/jre64
+  - --env=PYCHARM_PROPERTIES=${FLATPAK_DEST}/bin/idea.properties
+  - --env=PYCHARM_JDK=${FLATPAK_DEST}/extra/jbr/
 
   # Bus
   - --talk-name=com.canonical.AppMenu.Registrar
@@ -51,8 +51,8 @@ add-extensions:
     no-autodownload: true
 modules:
   - shared-modules/libsecret/libsecret.json
-  - src/python3-pipenv.yaml
   - src/python3-virtualenv.yaml
+  - src/python3-pipenv.yaml
   - src/python3-poetry.yaml
 
   - name: rsync
@@ -88,9 +88,9 @@ modules:
 
   - name: idea
     build-commands:
-      - install -Dm 644 -t ${FLATPAK_DEST}/bin idea.properties
-      - install -d "${FLATPAK_DEST}/extensions"
       - install -d "${FLATPAK_DEST}/packages"
+      - install -d "${FLATPAK_DEST}/extensions"
+      - install -Dm 644 -t ${FLATPAK_DEST}/bin idea.properties
 
       # DO NOT EDIT
       - install -Dm 755 apply_extra ${FLATPAK_DEST}/bin/apply_extra
