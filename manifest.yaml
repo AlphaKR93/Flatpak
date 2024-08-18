@@ -126,9 +126,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/python/pycharm-professional-2024.2.tar.gz
-        sha256: 433614ddf391fa208f65684ff511ade2d79a87de995699b6a3c6837c27b03b27
-        size: 1167776746
+        url: https://download.jetbrains.com/python/pycharm-professional-242.20224.89.tar.gz
+        sha256: f26e67b710bfb50148799ef07418fdeafce1f40ce9f1e8cff73089e5ab4cebb9
+        size: 1197528786
 
         # DO NOT EDIT
         type: extra-data
@@ -141,9 +141,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/python/pycharm-professional-2024.2-aarch64.tar.gz
-        sha256: 2af60f9229b77e2682bf3daa29d18b88598b98cfb1a42d2e739c86388f31c821
-        size: 1166936342
+        url: https://download.jetbrains.com/python/pycharm-professional-242.20224.89-aarch64.tar.gz
+        sha256: 394b8422820a3a40cc952d4b9c852feacefa03fb4de597dc3749fffb23f704e8
+        size: 1196683033
 
         # DO NOT EDIT
         type: extra-data
@@ -154,7 +154,7 @@ modules:
         path: src
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
