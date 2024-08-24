@@ -67,6 +67,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LicenseRef-proprietary</project_license>
   <releases>
+    <release version="0.0.25" date="2024-08-23">
+      <description></description>
+    </release>
     <release version="0.0.63" date="2024-08-05"/>
     <release version="0.0.62" date="2024-07-30"/>
     <release version="0.0.61" date="2024-07-22"/>
