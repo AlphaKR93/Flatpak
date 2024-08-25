@@ -58,7 +58,8 @@ modules:
         path: com.beeper.Beeper.metainfo.xml
 
       - commands:
-          - bsdtar -Oxf source.deb data.tar.xz | bsdtar -xf - --strip-components=3 ./opt/Beeper
+          - bsdtar -Oxf source.deb data.tar.xz | bsdtar -xf - --strip-components=3
+            ./opt/Beeper
           - rm source.deb
 
         # DO NOT EDIT
@@ -74,7 +75,8 @@ modules:
           url: https://api.alpha93.kr/tools/io/conv/json?url=https://download.todesktop.com/2003241lzgn20jd/latest-linux.yml
           version-query: .version
           timestamp-query: .releaseDate
-          url-query: .files | .[] | select(.url | contains("deb")) | "https://download.todesktop.com/2003241lzgn20jd/" + .url
+          url-query: .files | .[] | select(.url | contains("deb")) | "https://download.todesktop.com/2003241lzgn20jd/"
+            + .url
 
         # DO NOT EDIT
         type: extra-data
@@ -106,8 +108,8 @@ modules:
       - name: socat
         sources:
           - type: archive
-            url: http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
-            sha256: 6010f4f311e5ebe0e63c77f78613d264253680006ac8979f52b0711a9a231e82
+            url: http://www.dest-unreach.org/socat/download/socat-1.8.0.1.tar.gz
+            sha256: dc350411e03da657269e529c4d49fe23ba7b4610b0b225c020df4cf9b46e6982
             x-checker-data:
               type: anitya
               project-id: 4848
@@ -124,7 +126,7 @@ modules:
           tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
