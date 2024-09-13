@@ -112,9 +112,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/idea/ideaIU-242.21829.15.tar.gz
-        sha256: fd8b629681281dc176383c66b79fa7db5e5e0e54be57a55c6f3a5b06e544cde4
-        size: 1425459650
+        url: https://download.jetbrains.com/idea/ideaIU-243.12818.47.tar.gz
+        sha256: f9c22aa7208af77581fb87e8c3ac0f9825f5a233e1f31b9ce1a6c8ecb59786ec
+        size: 1457521553
 
         # DO NOT EDIT
         type: extra-data
@@ -127,9 +127,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/idea/ideaIU-242.21829.15-aarch64.tar.gz
-        sha256: 8a485e9af5bc12b9cbb69b6c5df5e625ca23a8bb4d2c10a0f89b80ef729b9b5c
-        size: 1424287206
+        url: https://download.jetbrains.com/idea/ideaIU-243.12818.47-aarch64.tar.gz
+        sha256: 7549794992a1a72ec78bb0e21457dc3064f6cd6df013dbc1371f514f4e9e3930
+        size: 1454785191
 
         # DO NOT EDIT
         type: extra-data
@@ -140,7 +140,7 @@ modules:
         path: src
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
