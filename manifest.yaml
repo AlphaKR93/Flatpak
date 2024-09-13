@@ -112,9 +112,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/webstorm/WebStorm-242.20224.96.tar.gz
-        sha256: 517d6a43f7540fcdb68938117e84f87059358e56554245936f596d1d24850c95
-        size: 982468402
+        url: https://download.jetbrains.com/webstorm/WebStorm-243.12818.48.tar.gz
+        sha256: 0d213587c4d77743c3973d79e75e0c82f0f8fdab4087725f755fc5d268d26bfa
+        size: 917433713
 
         # DO NOT EDIT
         type: extra-data
@@ -127,9 +127,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/webstorm/WebStorm-242.20224.96-aarch64.tar.gz
-        sha256: 2e45c58cc40b5e4875687cad996e2f5775ceb7e12817b191ba4ac2e6aa917ec3
-        size: 981308926
+        url: https://download.jetbrains.com/webstorm/WebStorm-243.12818.48-aarch64.tar.gz
+        sha256: 1c898f212aa7896012489a42c531eeef6cbe750a411f148f42f4d3d5cf23a762
+        size: 914708257
 
         # DO NOT EDIT
         type: extra-data
@@ -140,7 +140,7 @@ modules:
         path: src
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
