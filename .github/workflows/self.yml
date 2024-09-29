@@ -1,8 +1,8 @@
 name: Build and publish Flatpak package manually
 on:
   push:
-    paths:
-      - manifest.yaml
+    branches-ignore:
+      - main
   workflow_dispatch:
     inputs:
       arch:
