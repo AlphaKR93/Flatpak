@@ -37,6 +37,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>BSD-3-Clause</project_license>
   <releases>
+    <release version="128.0.6613.189" date="2024-10-18">
+      <description></description>
+    </release>
     <release version="126.0.6468.2-1" date="2024-05-10"/>
     <release version="126.0.6439.0-1" date="2024-04-25"/>
     <release version="126.0.6423.2-1" date="2024-04-18"/>

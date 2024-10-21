@@ -125,9 +125,9 @@ modules:
           project-id: 373887
           url-template: https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_AVX2.zip
 
-        url: https://github.com/Alex313031/thorium/releases/download/M126.0.6478.231/thorium-browser_126.0.6478.231_AVX2.zip
-        sha256: ffb1193f8c37579de2da63e9f1fa3fe37d15f45f45145cdb3deb197bf1c00e24
-        size: 274678609
+        url: https://github.com/Alex313031/thorium/releases/download/M128.0.6613.189/thorium-browser_128.0.6613.189_AVX2.zip
+        sha256: d74b09e4095235c23276d02545906f6a15da5173929ad349266518f69feccaf3
+        size: 304023354
 
         # DO NOT EDIT
         type: extra-data
@@ -148,7 +148,7 @@ modules:
           tag-pattern: ^v([\d.]+(?:beta[\d.]+?))$
 
 sdk: org.freedesktop.Sdk
-tags: ['proprietary']
+tags: [proprietary]
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 separate-locales: false
