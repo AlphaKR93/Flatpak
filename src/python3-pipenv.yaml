@@ -5,8 +5,8 @@ build-commands:
   - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pipenv" --no-build-isolation
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/22/f5/ab3ad86bd0c64a9508eaf7d83f9d353a0ccf4127a917697fa9733401e5fa/pipenv-2024.3.0-py3-none-any.whl
-    sha256: 59bd549299475e47d94b1713c5cd392ffcd3fb66f062ca82366554aa94be9c38
+    url: https://files.pythonhosted.org/packages/e5/e7/d38bb374e4ee7deb951674c4107474448510f165a18553bb639eb25f02cd/pipenv-2024.3.1-py3-none-any.whl
+    sha256: f8c1ad87eb922594cd288992e03b965f1f81a7f141390899360bdb784eb092fc
     x-checker-data:
       name: pipenv
       packagetype: bdist_wheel
