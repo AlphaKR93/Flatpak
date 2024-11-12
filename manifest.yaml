@@ -66,9 +66,9 @@ modules:
         dest-filename: apply_extra
         type: script
 
-      - url: https://download.todesktop.com/2003241lzgn20jd/beeper-3.109.1-build-240923466rji1i4-amd64.deb
-        sha256: c74df62555372532911ef7fa8abe166ad6fd086efad7269193d419f97efd0e0a
-        size: 123803512
+      - url: https://download.todesktop.com/2003241lzgn20jd/beeper-3.110.1-build-241031sx3gh9lyl-amd64.deb
+        sha256: c722e5441d98186ade40c57cbba221d124151fbd2704cc4a32fb657bc974e784
+        size: 125355116
         x-checker-data:
           type: json
           is-main-source: true
