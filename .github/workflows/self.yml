@@ -1,8 +1,9 @@
 name: Build and publish Flatpak package manually
 on:
   push:
-    branches-ignore:
-      - main
+    branches: 
+      - '**'
+      - '!main'
   workflow_dispatch:
     inputs:
       arch:
