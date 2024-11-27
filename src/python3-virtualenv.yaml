@@ -6,8 +6,8 @@ build-commands:
     --no-build-isolation
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/ff/01/2bdc4b6a93ca3de898195e37391e3ae335d21ef7657ae9415bb451a4b01b/virtualenv-20.27.2-py3-none-any.whl
-    sha256: a9ebd6adbf08c99583133b61e7491f8a4bc8d5fb34361abaa5ede3fff903a0f0
+    url: https://files.pythonhosted.org/packages/10/f9/0919cf6f1432a8c4baa62511f8f8da8225432d22e83e3476f5be1a1edc6e/virtualenv-20.28.0-py3-none-any.whl
+    sha256: 23eae1b4516ecd610481eda647f3a7c09aea295055337331bb4e6892ecce47b0
     x-checker-data:
       name: virtualenv
       packagetype: bdist_wheel
