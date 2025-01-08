@@ -75,9 +75,9 @@ modules:
           url: https://discord.com/api/download/development?platform=linux&format=tar.gz
           pattern: https://dl-development.discordapp.net/apps/linux/([0-9.]+)/discord-development-([0-9.]+).tar.gz
 
-        url: https://development.dl2.discordapp.net/apps/linux/0.0.61/discord-development-0.0.61.tar.gz
-        sha256: f6cb20b9edd8f12b722a773576fafa6f46778633d8b4908db95b2bbaa171f2e8
-        size: 101848624
+        url: https://development.dl2.discordapp.net/apps/linux/0.0.62/discord-development-0.0.62.tar.gz
+        sha256: cd31addbff6ea85ef50f0667a93925e70f8454ee2f821e725786f9fb6e43e138
+        size: 101846810
 
         # DO NOT EDIT
         type: extra-data
