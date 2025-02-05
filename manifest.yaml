@@ -73,9 +73,9 @@ modules:
           url: https://discord.com/api/download?platform=linux&format=tar.gz
           pattern: https://dl.discordapp.net/apps/linux/([0-9.]+)/discord-([0-9.]+).tar.gz
 
-        url: https://stable.dl2.discordapp.net/apps/linux/0.0.83/discord-0.0.83.tar.gz
-        sha256: b610674988d86b64041f2c48844880ef784cb3f4bc9fcd3ca2af0800ab40ed52
-        size: 101824894
+        url: https://stable.dl2.discordapp.net/apps/linux/0.0.84/discord-0.0.84.tar.gz
+        sha256: 19bc5af187a48f1f1adc190f05f50074b5b981d9eadd631cc16debcd58198e88
+        size: 101821845
 
         # DO NOT EDIT
         type: extra-data
