@@ -5,8 +5,8 @@ build-commands:
   - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "poetry" --no-build-isolation
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/6f/8e/c8913d12f5354f9336a2edbdc71d5ca2dcb85d54300cd2cc1ca63f31d811/poetry-2.1.0-py3-none-any.whl
-    sha256: 729433449d615589f615bbcef1cbfc78d5a3ed8aebfda545e56880cb4c0fe87b
+    url: https://files.pythonhosted.org/packages/30/bc/af65a47c15462ce4e847142153a9767fd01b185becd1794f839add8bf430/poetry-2.1.1-py3-none-any.whl
+    sha256: 1d433880bd5b401327ddee789ccfe9ff197bf3b0cd240f0bc7cc99c84d14b16c
     x-checker-data:
       name: poetry
       packagetype: bdist_wheel
