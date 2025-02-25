@@ -126,9 +126,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/python/pycharm-professional-251.20015.54.tar.gz
-        sha256: cdcd98031ff14bd0e152ed91c405b395b24e7c8a8506fd1bb8c17e6ea7ade163
-        size: 1130356571
+        url: https://download.jetbrains.com/python/pycharm-professional-251.22821.82.tar.gz
+        sha256: e039a3b02ebaea391c0b28dc6a9d25f8e299a0d05eef7b4519f552982ba244ee
+        size: 1152668844
 
         # DO NOT EDIT
         type: extra-data
@@ -141,9 +141,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/python/pycharm-professional-251.20015.54-aarch64.tar.gz
-        sha256: 826a2c0a537fedc3e4a7a7cbee0233668639e764d1c33050f03b0a210054d1c8
-        size: 1127718243
+        url: https://download.jetbrains.com/python/pycharm-professional-251.22821.82-aarch64.tar.gz
+        sha256: d8b040412d9537b09031b51fcf79fe874fcaecd3813d7713908dad5f4c435c88
+        size: 1150022873
 
         # DO NOT EDIT
         type: extra-data
