@@ -74,9 +74,9 @@ modules:
           url: https://discord.com/api/download/ptb?platform=linux&format=tar.gz
           pattern: https://dl.ptb-discordapp.net/apps/linux/([0-9.]+)/discord-ptb-([0-9.]+).tar.gz
 
-        url: https://ptb.dl2.discordapp.net/apps/linux/0.0.134/discord-ptb-0.0.134.tar.gz
-        sha256: 2a4c8517183bcaebda8ff57baf478f07698dcfe18da9ea1456f8dbf6fdbf3d06
-        size: 102411530
+        url: https://ptb.dl2.discordapp.net/apps/linux/0.0.135/discord-ptb-0.0.135.tar.gz
+        sha256: b734ad88800ff37fa7b39649af60c2b602e1a0f7f8f5106766dc7afae9d79dd9
+        size: 102425885
 
         # DO NOT EDIT
         type: extra-data
