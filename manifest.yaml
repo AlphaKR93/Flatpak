@@ -75,9 +75,9 @@ modules:
           url: https://discord.com/api/download/canary?platform=linux&format=tar.gz
           pattern: https://dl.discord-canary.net/apps/linux/([0-9.]+)/discord-canary-([0-9.]+).tar.gz
 
-        url: https://canary.dl2.discordapp.net/apps/linux/0.0.620/discord-canary-0.0.620.tar.gz
-        sha256: 443416b3e13e6cd31bc19831c3238673483ec275fc94fc8a672d9c2cdfda7d93
-        size: 105413948
+        url: https://canary.dl2.discordapp.net/apps/linux/0.0.621/discord-canary-0.0.621.tar.gz
+        sha256: 273ed8207d74ee7f3d37fc107e1b3d41f12a58260ef81b631eb812be4ef11bea
+        size: 105409603
 
         # DO NOT EDIT
         type: extra-data
