@@ -112,9 +112,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/webstorm/WebStorm-252.18003.34.tar.gz
-        sha256: 7a75c706ad2ded1b3aaba2262723a538c3ff9524583ffea637938747fccb71c2
-        size: 1259418892
+        url: https://download.jetbrains.com/webstorm/WebStorm-252.19874.19.tar.gz
+        sha256: 47e903f89c10710349a00f40b4acca79a3cb5ad7587717f1f22a86034369e581
+        size: 1264119628
 
         # DO NOT EDIT
         type: extra-data
@@ -127,9 +127,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/webstorm/WebStorm-252.18003.34-aarch64.tar.gz
-        sha256: de20967be795a6c5cb386d77b127991e8245ebe5f88f03a33cf14416390dc2ad
-        size: 1253529097
+        url: https://download.jetbrains.com/webstorm/WebStorm-252.19874.19-aarch64.tar.gz
+        sha256: 52ea31ddc33e6a188a0d3db3f7e2ca8a6fa97bcc6f328c7e2c449d79e3d2c78a
+        size: 1258255768
 
         # DO NOT EDIT
         type: extra-data
