@@ -126,9 +126,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/python/pycharm-252.21735.39.tar.gz
-        sha256: e4dff9fcd668472b245fe182f622360713afaeda510e7eb68bd5de8158712942
-        size: 1360148164
+        url: https://download.jetbrains.com/python/pycharm-252.23309.36.tar.gz
+        sha256: 11db3dd9ab01fd0046dd58c6c4d63d2246ee73edbb06537d67ac4c03e15cc48c
+        size: 1364497026
 
         # DO NOT EDIT
         type: extra-data
@@ -141,9 +141,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/python/pycharm-252.21735.39-aarch64.tar.gz
-        sha256: f3c4c89704addb817251f858fa4dce84c6843a3190c5e92c59a0fa7826a4d2f5
-        size: 1354611229
+        url: https://download.jetbrains.com/python/pycharm-252.23309.36-aarch64.tar.gz
+        sha256: 7a260a05010efe38f2182254970100490df90cc0e6e5d3aa989274d6324f3985
+        size: 1358978881
 
         # DO NOT EDIT
         type: extra-data
