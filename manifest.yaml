@@ -112,9 +112,9 @@ modules:
         only-arches:
           - x86_64
 
-        url: https://download.jetbrains.com/idea/ideaIU-252.26199.7.tar.gz
-        sha256: f8d08b52c3944101de4d9aa1051a2e70ebc5ffbc2bb9836ef722439979130bcb
-        size: 1777649226
+        url: https://download.jetbrains.com/idea/idea-253.17525.95.tar.gz
+        sha256: 05c0a5dca0656063d6e08165be382822128fd8001615aa06573275272a972a52
+        size: 1586324864
 
         # DO NOT EDIT
         type: extra-data
@@ -127,9 +127,9 @@ modules:
         only-arches:
           - aarch64
 
-        url: https://download.jetbrains.com/idea/ideaIU-252.26199.7-aarch64.tar.gz
-        sha256: 0d16af3ab64b05177ada84a95af7b875f58fc936120ca52abf233824a6fb7cbc
-        size: 1774535604
+        url: https://download.jetbrains.com/idea/idea-253.17525.95-aarch64.tar.gz
+        sha256: 02d789578aea003fd7be7eab1ce4f3101f112a11b1a3dbb9003433d9222ae9df
+        size: 1581667768
 
         # DO NOT EDIT
         type: extra-data
