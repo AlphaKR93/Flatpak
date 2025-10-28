@@ -18,8 +18,11 @@
 	<url type="help">https://www.jetbrains.com/help/pycharm/</url>
 	<launchable type="desktop-id">com.jetbrains.PyCharm.desktop</launchable>
 	<releases>
-		<release version="2025.3" date="2025-10-17">
+		<release version="2025.3" date="2025-10-27">
 			<description></description>
+		</release>
+		<release version="2025.3" date="2025-10-17">
+			<description/>
 		</release>
 		<release version="2025.3" date="2025-10-03">
 			<description/>
